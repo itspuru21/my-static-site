@@ -1,0 +1,34 @@
+name: GitHub-Actions-Testing
+
+on:
+    push:
+        branches: main
+        paths: '!/.github/workflows/**'
+    workflow_dispatch:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: checkout-code
+                run: echo "using checkoutaction do this"
+            -   name: settingup-node
+                run: echo "using the nodeactions do this also use with to use node version 20"
+            -   name: install-clean-dependencies
+                run: echo "npm ci"
+            -   name: running-tests
+                run: echo "npm run test"
+            -   name: building-project
+                run: echo "npm run build"
+            -   name: uploading-artifacts
+                run: echo "use artifact upload action to upload them,using with, and artifat name, path is dist"
+
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: download-artifacts
+                run: echo "use artifact download action to download artifact, with name of the above uploaded artifact"
+            -   name: output-contents
+                run: echo "ls it"
+            -   name: deploying
+                run: echo "Deploying"
