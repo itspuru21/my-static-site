@@ -11,24 +11,33 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   name: checkout-code
-                run: echo "using checkoutaction do this"
+                uses: actions/checkout@v7.0.1
+
             -   name: settingup-node
-                run: echo "using the nodeactions do this also use with to use node version 20"
+                uses: actions/setup-node@v7.0.0
+
             -   name: install-clean-dependencies
-                run: echo "npm ci"
+                run: npm ci
             -   name: running-tests
-                run: echo "npm run test"
+                run: npm run test
             -   name: building-project
-                run: echo "npm run build"
+                run: npm run build
+
             -   name: uploading-artifacts
-                run: echo "use artifact upload action to upload them,using with, and artifat name, path is dist"
+                uses: actions/upload-artifact@v7.0.1
+                with:
+                    name: dist-artifacts
+                    path: dist
 
     deploy:
         runs-on: ubuntu-latest
         steps:
             -   name: download-artifacts
-                run: echo "use artifact download action to download artifact, with name of the above uploaded artifact"
+                uses: actions/download-artifact@v8.0.1
+                with:
+                    name: dist-artifacts
+
             -   name: output-contents
-                run: echo "ls it"
+                run: ls
             -   name: deploying
                 run: echo "Deploying"
