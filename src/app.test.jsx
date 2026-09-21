@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-// A simple math helper function to test logic
+// A simple math helper function to test 
 const addNumbers = (a, b) => a + b;
 
 describe('Simple Project Unit Tests', () => {
