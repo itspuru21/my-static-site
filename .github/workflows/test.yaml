@@ -1,9 +1,11 @@
 name: GitHub-Actions-Testing
 
 on:
+    workflow_dispatch:
     push:
         branches: main
-    workflow_dispatch:
+        paths-ignore:
+            - '.github/**'
 
 jobs:
     test:
